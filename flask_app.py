@@ -59,10 +59,11 @@ def web_app_data_post():
     return "ok", 200
 
 
+# Устанавливаем вебхук
+bot.remove_webhook()
+bot.set_webhook(url=config.HOST+config.WEBHOOK_PATH)
+
 
 if __name__ == '__main__':
-    # Устанавливаем вебхук
-    bot.remove_webhook()
-    bot.set_webhook(url=config.HOST+config.WEBHOOK_PATH)
     # Запускаем веб-сервер Flask
     app.run(host='0.0.0.0', port=8443, debug=True)
