@@ -11,3 +11,4 @@ dump.rdb
 macbook-venv
 config.py
 main.py
+bot_database.db
