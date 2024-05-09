@@ -70,10 +70,10 @@ def handle_start_using(callback_query, bot):
 def handle_text_message(message, bot):
     # TBD
     pass
-	'''markup = telebot.types.InlineKeyboardMarkup()
-	markup.row_width = 1
-	markup.add(telebot.types.InlineKeyboardButton("Ссылка на трекер", web_app=telebot.types.WebAppInfo(config.WEB_APP_URL)))
-	bot.reply_to(message, message.text, reply_markup=markup)'''
+    '''markup = telebot.types.InlineKeyboardMarkup()
+    markup.row_width = 1
+    markup.add(telebot.types.InlineKeyboardButton("Ссылка на трекер", web_app=telebot.types.WebAppInfo(config.WEB_APP_URL)))
+    bot.reply_to(message, message.text, reply_markup=markup)'''
 
 
 def handle_callback_query(call, bot):
@@ -88,14 +88,14 @@ def handle_web_app_data(message, bot):
     pass
     '''
     try:
-		web_app_data = json.loads(message.web_app_data.data)
-		bot.send_message(message.chat.id, "Спасибо за обратную связь!")
-		time.sleep(1)
-		name = web_app_data.get('name', 'Без имени')
-		if len(name) > 0:
-			bot.send_message(message.chat.id, name)
-	except json.JSONDecodeError:
-		print("Ошибка декодирования JSON")
+        web_app_data = json.loads(message.web_app_data.data)
+        bot.send_message(message.chat.id, "Спасибо за обратную связь!")
+        time.sleep(1)
+        name = web_app_data.get('name', 'Без имени')
+        if len(name) > 0:
+            bot.send_message(message.chat.id, name)
+    except json.JSONDecodeError:
+        print("Ошибка декодирования JSON")
     '''
 
 
@@ -107,12 +107,12 @@ def handle_web_app_save_daily_meals_request_data(request, bot):
     proteins = request.json['proteins']
     # TBD: send meals to backend
     # TBD: add history button to message
-	bot.answer_web_app_query(callback_query_id, {
-		'type': 'article',
-		'id': callback_query_id,
-		'title': 'Успешно обновлено',
-		'input_message_content': {
-			'message_text': text.TRACKER_SAVED + f'{kcal} / {proteins} / {fats} / {carbs}',
+    bot.answer_web_app_query(callback_query_id, {
+        'type': 'article',
+        'id': callback_query_id,
+        'title': 'Успешно обновлено',
+        'input_message_content': {
+            'message_text': text.TRACKER_SAVED + f'{kcal} / {proteins} / {fats} / {carbs}',
 
-		}
-	})
+        }
+    })

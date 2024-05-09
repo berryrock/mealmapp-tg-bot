@@ -17,7 +17,7 @@ dbhelper.create_users_table()
 # Обработка запросов
 @app.route('/', methods=['GET', 'HEAD'])
 def index():
-	return "ok", 200
+    return "ok", 200
 
 
 # Обработчик вебхука
@@ -37,7 +37,7 @@ def send_welcome(message):
 # Обработчик текстовых сообщений
 @bot.message_handler(content_types=['text'])
 def text_message_handler(message):
-	handlers.handle_text_message(message, bot)
+    handlers.handle_text_message(message, bot)
 
 
 # Обработчик нажатия на inline кнопку
@@ -49,14 +49,14 @@ def callback_query(call):
 # Обработчик отправленных данных от веб-приложения через KeyboardButton
 @bot.message_handler(content_types=['web_app_data'])
 def web_app_data_handler(message):
-	handlers.handle_web_app_data(message, bot)
+    handlers.handle_web_app_data(message, bot)
 
 
 # Обработчик данных от веб-приложения бота
 @app.route('/web-data', methods=['POST'])
 def web_app_data_post():
-	handlers.handle_web_app_post_request_data(request, bot)
-	return "ok", 200
+    handlers.handle_web_app_post_request_data(request, bot)
+    return "ok", 200
 
 
 # Устанавливаем вебхук
