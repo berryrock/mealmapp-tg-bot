@@ -36,7 +36,7 @@ def handle_continue(callback_query, bot):
     bot.edit_message_reply_markup(callback_query.message.chat.id, callback_query.message.message_id)
 
     # Обновляем этап онбординга пользователя на второй
-    update_onboarding_stage(callback_query.message.chat.id, 2)
+    dbhelper.update_onboarding_stage(callback_query.message.chat.id, 2)
 
     # Создаем inline клавиатуру с кнопкой "Начать пользоваться"
     markup = types.InlineKeyboardMarkup()
@@ -53,7 +53,7 @@ def handle_continue(callback_query, bot):
 def handle_start_using(callback_query, bot):
     # Обновляем этап онбординга пользователя на завершение
     try:
-        update_onboarding_stage(callback_query.message.chat.id, 3)
+        dbhelper.update_onboarding_stage(callback_query.message.chat.id, 3)
     except:
         raise Exception
 
@@ -79,7 +79,7 @@ def handle_callback_query(call, bot):
     if call.data == 'continue':
         handle_continue(call, bot)
     elif call.data == 'start_using':
-        handle_start_using(update.callback_query, bot)
+        handle_start_using(call, bot)
 
 
 def handle_web_app_data(message, bot):

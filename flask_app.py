@@ -64,6 +64,6 @@ bot.remove_webhook()
 bot.set_webhook(url=config.HOST+config.WEBHOOK_PATH)
 
 
-if __name__ == '__flask_app__':
+if __name__ == '__main__':
     # Запускаем веб-сервер Flask
     app.run(host='0.0.0.0', port=8443, debug=True)
