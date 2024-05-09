@@ -1,5 +1,4 @@
-from .services import dbhelper, texts
-from . import config
+from . import dbhelper, texts
 
 import telebot
 from telebot import types
